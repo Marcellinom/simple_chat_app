@@ -33,7 +33,7 @@ io.on("connection", (socket) => {
   
   let user_count = io.engine.clientsCount
   io.sockets.emit("jumlah user update", user_count)
-  socket.on("disconnect", user_count);
+  socket.on("disconnect", () => socket.emit("jumlah user update", user_count));
 
   socket.emit("load message", data);
 
